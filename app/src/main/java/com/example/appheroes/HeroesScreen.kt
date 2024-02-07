@@ -1,12 +1,10 @@
 package com.example.appheroes
 
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -40,12 +38,6 @@ fun HeroItem(
         elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(id = R.dimen.dimens_2)),
         shape = RoundedCornerShape(size = (dimensionResource(id = R.dimen.dimens_8))),
         modifier = modifier
-            .animateContentSize(
-                animationSpec = spring(
-                    dampingRatio = Spring.DampingRatioHighBouncy,
-                    stiffness = Spring.StiffnessMediumLow
-                )
-            )
     ) {
         Row(
             modifier = modifier
@@ -88,7 +80,7 @@ fun HeroList(heroes: List<Hero>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(1),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.dimens_16)),
-        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.dimens_8)),
+        contentPadding = PaddingValues(dimensionResource(id = R.dimen.dimens_8))
     ) {
         items(heroes) { hero ->
             HeroItem(hero = hero)
