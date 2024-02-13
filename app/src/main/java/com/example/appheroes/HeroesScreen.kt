@@ -11,9 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -76,11 +75,11 @@ fun HeroItem(
 
 
 @Composable
-fun HeroList(heroes: List<Hero>) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(1),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.dimens_16)),
-        contentPadding = PaddingValues(dimensionResource(id = R.dimen.dimens_8))
+fun HeroList(heroes: List<Hero>, contentPadding: PaddingValues) {
+    LazyColumn(
+        contentPadding = contentPadding,
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.dimens_8)),
+        modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.dimens_16))
     ) {
         items(heroes) { hero ->
             HeroItem(hero = hero)
